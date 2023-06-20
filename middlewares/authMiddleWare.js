@@ -1,10 +1,11 @@
-import jwt from 'jsonwebtoken'
+const jwt = require('jsonwebtoken')
 
-export const isLoggedIn = async (req,res,next)=>{
+exports.isLoggedIn = async (req,res,next)=>{
     try {
         const verify = await jwt.verify(req.headers.authorization,process.env.RANDOM_KEY)
-        next()
+        
     } catch (error) {
         console.log(error);
+        next()
     }
 }

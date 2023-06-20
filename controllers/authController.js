@@ -1,9 +1,11 @@
-import User from '../models/User.js'
-import {hashPass,comparePass} from '../helpers/authHelper.js'
-import jwt from 'jsonwebtoken'
+const User = require('../models/User');
+const { hashPass, comparePass } = require('../helpers/authHelper');
+const jwt = require('jsonwebtoken')
+
+
 
 //register api
-export const registerContoller = async(req,res)=> {
+exports.registerContoller = async(req,res)=> {
 try {
     const { name, email, password } = req.body;
     const existingUser = await User.findOne({email})
@@ -32,7 +34,7 @@ try {
 }
 
 // login api
-export const loginController = async(req,res)=>{
+exports.loginController = async(req,res)=>{
 try {
     const { email, password } = req.body;
     if(!email || !password){
