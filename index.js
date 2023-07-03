@@ -17,7 +17,7 @@ app.use(cors());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/products", productRoutes);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`app running at ${PORT}`);
 });
