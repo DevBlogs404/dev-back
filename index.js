@@ -21,5 +21,9 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`app running at ${PORT}`);
 });
+app.use("/", (req, res) => {
+    res.send("App running successfully");
+  });
+  
 
-module.exports = app;
+
