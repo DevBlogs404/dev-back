@@ -17,4 +17,9 @@ app.use(cors());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/products", productRoutes);
 
-module.exports = app
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`app running at ${PORT}`);
+});
+
+module.exports = app;

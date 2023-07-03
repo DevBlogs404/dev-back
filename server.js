@@ -1,9 +1,5 @@
-const app = require("./index");
+const app = require('./index.js')
 app.use("/", (req, res) => {
-  res.send("App running successfully");
-});
-
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`app running at ${PORT}`);
-});
+    res.send("App running successfully");
+  });
+  
