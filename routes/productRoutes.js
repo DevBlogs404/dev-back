@@ -56,10 +56,26 @@ router.post("/add-products", upload.array("images", 5), async (req, res) => {
 
 // api for getting all prodcuts
 router.get("/get-products", async (req, res) => {
-  const products = await Product.find();
   try {
+    const products = await Product.find();
     if (products) {
       res.status(200).send(products);
+    }
+  } catch (error) {
+    res
+      .status(400)
+      .send({ success: false, message: "cannot fetch products", error });
+  }
+});
+
+// api for getting single prodcut
+router.get("/get-single-product", async (req, res) => {
+  try {
+    const id  = req.params.id;
+    console.log(id);
+    const product = await Product.findById(id)
+    if (product) {
+      res.status(200).send(product);
     }
   } catch (error) {
     res
@@ -72,7 +88,6 @@ router.get("/get-products", async (req, res) => {
 router.get("/get-products-by-category", async (req, res) => {
   try {
     const { category } = req.query;
-    // console.log(category);
     let filteredProducts;
     if (category === "all") {
       filteredProducts = await Product.find();
