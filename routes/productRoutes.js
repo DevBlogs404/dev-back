@@ -70,21 +70,6 @@ router.get("/get-products", async (req, res) => {
   }
 });
 
-// // api for getting single prodcut
-// router.get("/get-single-product/:id", async (req, res) => {
-//   try {
-//     const productId  = req.params.id;
-//     const product = await Product.findOne({_id:productId})
-//     if (product) {
-//       res.status(200).send(product);
-//     }
-//   } catch (error) {
-//     res
-//       .status(400)
-//       .send({ success: false, message: "cannot fetch products", error });
-//   }
-// });
-
 // api for getting prodcuts category-wise
 router.get("/get-products-by-category", async (req, res) => {
   try {
