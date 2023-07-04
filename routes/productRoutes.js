@@ -57,6 +57,8 @@ router.post("/add-products", upload.array("images", 5), async (req, res) => {
 // api for getting all prodcuts
 router.get("/get-products", async (req, res) => {
   try {
+    const id = req.params.id
+    console.log(id);
     const products = await Product.find();
     if (products) {
       res.status(200).send(products);
@@ -69,11 +71,10 @@ router.get("/get-products", async (req, res) => {
 });
 
 // api for getting single prodcut
-router.get("/get-single-product", async (req, res) => {
+router.get("/get-single-product/:id", async (req, res) => {
   try {
-    const id  = req.params.id;
-    console.log(id);
-    const product = await Product.findById(id)
+    const productId  = req.params.id;
+    const product = await Product.findOne({_id:productId})
     if (product) {
       res.status(200).send(product);
     }
